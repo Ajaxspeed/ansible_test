@@ -15,17 +15,12 @@
         network:
           assign_public_ip: yes
         wait: yes
-        state: running
         count: 1
         security_group: eshop
         aws_access_key: "{{ access_key }}"
         aws_secret_key: "{{ secret_key }}"
         security_token: "{{ session_token }}"
       register: ec2_instance_result
-
-    - name: Pause for 30 seconds to start instance
-      ansible.builtin.pause:
-        seconds: 30
 
     - name: Add instance host to group
       add_host:
