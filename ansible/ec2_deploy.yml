@@ -23,6 +23,10 @@
         security_token: "{{ session_token }}"
       register: ec2_instance_result
 
+    - name: Pause for 30 seconds to start instance
+      ansible.builtin.pause:
+        seconds: 30
+
     - name: Add instance host to group
       add_host:
         hostname: "{{ item.public_ip_address }}"
